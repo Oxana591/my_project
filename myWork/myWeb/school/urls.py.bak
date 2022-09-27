@@ -1,0 +1,13 @@
+﻿from django.urls import path
+
+from . import views
+
+urlpatterns=[
+    path('school/students/',views.studentsView,name='stud'),
+    path('st/',views.st,name='st'),
+    path('uch/',views.uch,name='uch'),
+    path('uch_rev/',views.uch_rev,name='uch_rev'),
+    path('uch_ost/',views.uch_ost,name='uch_ost'),
+    path('uch_find/',views.uch_find,name='uch_find'),
+    path('uch_add/',views.uch_add,name='uch_add'),
+]

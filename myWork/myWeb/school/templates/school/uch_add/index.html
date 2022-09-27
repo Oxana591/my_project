@@ -1,0 +1,36 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'school/css/style.css' %}">
+   
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <img src="{% static 'school/images/school.jpg' %}" id="sch_img">
+        <h2 style="color:red">Додати користувача:</h2>
+        <label><spaan>Прізвище</spaan> </label><input type="text" name="lastname" placeholder="Введіть прізвище "></br>
+        <label class="l2">Ім’я</label><input type="text" name="name" placeholder="Введіть ім’я"></br>
+        <label class="l3">Посада</label> <input type="text" name="post" placeholder="Введіть посаду"></br>
+        <input type="submit" value="Додати">
+    </form>
+    <p class="link"><a href="{% url 'uch_find' %}">Знайти користувача</a></p>
+    <h3> {{msg}} </h3>
+    <h1>Список учнів</h1>
+    <ol>
+        {%for person in pupil|dictsort:"lastname" %}
+            <li>{{person.name}} {{person.lastname}} {{person.post}} </li>
+        {%empty%}
+            <p>список пустий</p>
+        {%endfor%}
+    </ol>
+    
+   
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'school/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Введіть прізвище для пошуку:</h2>
+        <input type="text" name="find" placeholder="Введіть прізвище для пошуку">
+        <input type="submit" value="Знайти">
+    </form>
+    <p class="link"><a href="{%url 'uch_add'%}">Додати новий запис</a> </p>
+    <h3> {{msg}} </h3>
+    
+    <ol>
+        {%for person in pupil|dictsort:"name" %}
+            <li>{{person.name}} {{person.lastname}} {{person.post}} </li>
+        {%empty%}
+            <p>такого запису нема</p>
+        {%endfor%}
+    </ol>
+    
+   
+</body>
+</html>
